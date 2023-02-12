@@ -1,0 +1,10 @@
+body{
+    
+}
+
+@font-face {
+    font-family: "Gotham";
+    src: local("Gotham"),
+      url("font/gotham_nights/Gotham Nights.otf") format("opentype") tech(color-COLRv1), url("trickster-outline.otf")
+        format("opentype"), url("trickster-outline.woff") format("woff");
+}
