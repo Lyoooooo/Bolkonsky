@@ -1,1 +1,3 @@
 icons : https://fonts.google.com/icons
+
+font sofia : https://fonts.google.com/specimen/Sofia+Sans+Extra+Condensed/tester?query=sofia
