@@ -20,7 +20,7 @@ mainHeader();
 <body>
 
     <div class="titre">
-        CONTRE PLONGEE CINE
+        SÉANCES
     </div>
     <div class="container text-center">
         <!-- WHILE il rest des cinés avec des films, row avec les films -->

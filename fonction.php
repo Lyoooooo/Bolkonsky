@@ -13,7 +13,7 @@ function footer()
             </section>
         </div>
         <div class='text-center text-light p-3' style='background-color: rgba(0, 0, 0, 0.2);'>
-            © 2022 NOMDUSITE<br>
+            © <?php $year = date("Y"); echo $year; ?> NOMDUSITE<br>
         </div>
     </footer>
 <?php

@@ -18,7 +18,9 @@ mainHeader();
 </head>
 
 <body>
-
+    <div class="titre">
+        CONTRE PLONGÉE CINÉ
+    </div>
     <div id="placeholderCarrou" style="width: 80%; height: 400px; background-color:grey; margin-top: 20px; margin-bottom: 20px; margin-left: 10%;">
         EMPLACEMENT POUR LES BANNIERES
     </div>
@@ -42,7 +44,7 @@ mainHeader();
                 </div>
                 <div class="col">
                     <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
-                    POST INSTA
+                        POST INSTA
                     </div>
                 </div>
             </div>
