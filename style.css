@@ -77,3 +77,16 @@ img{
   overflow: hidden;
   margin-bottom: 1%;
 }
+
+.bigPictureArticle{
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 50px;
+}
+
+.textArticle{
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 100px;
+  text-align: center;
+}

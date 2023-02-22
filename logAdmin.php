@@ -17,7 +17,6 @@ mainHeader();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php mainHeader(); ?>
 
 </body>
 <?php footer(); ?>
