@@ -3,17 +3,18 @@ function footer()
 {
 ?>
     <footer class='text-center text-white' style='background-color: rgba(0, 0, 0, 0.904);color:white; width: 100%;'>
-    
+
         <div class='container pt-4'>
             <section class='text-center text-light'>
                 <p>
-                    NOMDUSITE est un site deposé par JESAISPAS. <br>
+                    Contre Plongée Ciné est un site deposé par JESAISPAS. <br>
                     Tous droits réservés.
                 </p>
             </section>
         </div>
         <div class='text-center text-light p-3' style='background-color: rgba(0, 0, 0, 0.2);'>
-            © <?php $year = date("Y"); echo $year; ?> NOMDUSITE<br>
+            © <?php $year = date("Y");
+                echo $year; ?> Contre Plongée Ciné<br>
         </div>
     </footer>
 <?php
@@ -24,7 +25,7 @@ function mainHeader()
 ?>
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" >NOMDUSITE</a>
+            <a class="navbar-brand" href="#">Contre Plongée Ciné</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
