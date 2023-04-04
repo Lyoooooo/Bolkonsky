@@ -1,0 +1,5 @@
+1 - Home sans insta 
+2 - Séances avec outil admin 
+3 - articles en reprenant la page dans gazette sans image au milieu
+4 - Gazette 
+5 - insta sur le home + images dans les articles 
