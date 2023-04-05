@@ -1,4 +1,19 @@
 <?php
+function connexion()
+{
+    try {
+        $pdo = new PDO('mysql:dbname=cpc;host=127.0.0.1', 'root', '');
+        $pdo->exec("SET CHARACTER SET utf8mb4");
+    } catch (PDOException $e) {
+        $pdo = new PDO('mysql:dbname=cpc;host=127.0.0.1;port=3307', 'root', '');
+        $pdo->exec("SET CHARACTER SET utf8mb4");
+    }
+    return $pdo;
+}
+
+?>
+
+<?php
 function footer()
 {
 ?>
@@ -33,6 +48,7 @@ function mainHeader()
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                     <a class="nav-link active" href="seances.php">Séances</a>
+                    <a class="nav-link active" href="article.php">Article</a>
                     <a class="nav-link active" href="gazette.php">Gazette</a>
                 </div>
             </div>

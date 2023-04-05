@@ -1,5 +1,6 @@
 <?php
 include "fonction.php";
+$pdo = connexion();
 mainHeader();
 ?>
 

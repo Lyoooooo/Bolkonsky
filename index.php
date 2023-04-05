@@ -1,6 +1,12 @@
 <?php
 include "fonction.php";
+$pdo = connexion();
 mainHeader();
+
+
+$res = $pdo->prepare("SELECT * FROM article ORDER BY datepost DESC limit 2");
+$res->execute();
+$tab = $res->fetchAll();
 ?>
 
 <!DOCTYPE html>
