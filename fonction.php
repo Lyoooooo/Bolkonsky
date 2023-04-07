@@ -57,3 +57,74 @@ function mainHeader()
 <?php
 }
 ?>
+<?php
+function ajoutgazette()
+{
+?>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nouvelle Gazette</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            Titre :<span class="etoile"> *</span>
+                            <input type="text" class="form-control" id="floatingInput" name="nomgazette" value="Gazette du " required>
+                        </div>
+                        <label for="validationDefault01" class="form-label">Selectionnez la date de l'ajout du post :</label> <span class="etoile">*</span><br> <!-- permet de rentré le champ date de naissance-->
+                        <input type="date" class="form-control" name="dategazette" id="dategazette" value=" " required><br>
+                        <script>
+                            // Obtenir la date actuelle
+                            var currentDate = new Date();
+
+                            // Formater la date dans le format YYYY-MM-DD attendu par l'élément "date"
+                            var formattedDate = currentDate.toISOString().substr(0, 10);
+
+                            // Définir la valeur par défaut de l'élément "date" sur la date actuelle
+                            document.getElementById("dategazette").value = formattedDate;
+                        </script>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupFile01">PDF</label>
+                            <input class="form-control" name="pdf" type="file" id="formFile" accept=".pdf"><br>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary" name="bouton">Poster</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php
+    if (isset($_POST["bouton"])) {
+        extract($_POST);
+        extract($_FILES);
+        // $idu = $_SESSION["idu"];
+        $pdo = connexion();
+        // if ($_FILES['photo']['name'] == "" || $_FILES['photo']['error'] == 4 || $_FILES['photo']['error'] == 1) {
+        //   $photo = NULL;
+        // } else {
+        $pdf = ajoutpdf($nomgazette, $dategazette);
+        // }
+        $stmt = $pdo->prepare("INSERT INTO gazette VALUES(?,?,?,?)");
+        $stmt->execute([null, $nomgazette, $dategazette, $pdf]);
+    ?>
+        <meta http-equiv="refresh" content="1">
+<?php   }
+}
+
+function ajoutpdf($nomgazette, $dategazette)
+{
+    $extensions = array('pdf'); //liste des extensions
+    $ext = strtolower(substr(strrchr($_FILES['pdf']['name'], '.'), 1)); //extrait l'extension de l'image et la rend en minuscule
+    if ((in_array($ext, $extensions)) && ($_FILES['pdf']['size'] < 20971520)) { //limite la taille et compare l'extension
+        $pdf = 'gazette/' . $nomgazette . '-' . $dategazette . '.pdf';
+        move_uploaded_file($_FILES['pdf']['tmp_name'], $pdf); //place l'image dans le dossier
+    }
+    return $pdf;
+}

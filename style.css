@@ -12,6 +12,9 @@ img{
   display: block; /* remove extra space below image */
 }
 
+span.etoile {
+  color: #ff0000;
+}
 .titre{
   margin-left: 30%;
   margin-top: 5%;

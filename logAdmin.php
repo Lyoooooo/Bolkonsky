@@ -29,7 +29,7 @@ if (isset($_POST["bouton"])) {
 </head>
 
 <body style="background-color: white;">
-    <?php if (isset($erreur)) : ?> <!--affichage d'un message d'erreur si jamais le mail ou le mot de passe n'est pas bon-->
+    <?php if (isset($erreur)) : ?> <!--affichage d'un message d'erreur si jamais le user ou le mot de passe n'est pas bon-->
         <div class="alert alert-danger d-flex align-items-center">
 
             <?php echo $erreur ?>

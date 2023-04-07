@@ -23,9 +23,52 @@ mainHeader();
     <div class="titre">
         GAZETTE
     </div>
-    <div class="post" style="width: 800px; height:850px;  background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 30%; position:relative">
-        Inserer Gazette
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position: fixed; bottom: 10%; right: 5%; border: 0px; background-color:rgba(0,0,0,0); z-index: 1;">
+        <img src="icons/boutonAddPost.webp" alt="" style="height: 60px;">
+    </button>
+    <?php ajoutgazette(); ?>
+
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAA
+                </div>
+            </div>
+            <div class="col">
+                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAA
+                </div>
+            </div>
+            <div class="col">
+                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAA
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAA
+                </div>
+            </div>
+            <div class="col">
+                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAA
+                </div>
+            </div>
+            <div class="col">
+                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAA
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- <div class="post" style="width: 800px; height:850px;  background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 30%; position:relative">
+        Inserer Gazette
+    </div> -->
 </body>
 <?php
 footer();
