@@ -1,3 +1,5 @@
 icons : https://fonts.google.com/icons
 
 font sofia : https://fonts.google.com/specimen/Sofia+Sans+Extra+Condensed/tester?query=sofia
+
+format image bannière : 728 x 90 (aspect 8/1 mais pg si l'image est plus grande, on affichera que le haut qui rentre dans cet aspect)
