@@ -32,35 +32,37 @@ mainHeader();
     <div class="container text-center">
         <div class="row">
             <div class="col">
-                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                <div class="gazette" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
                     GAZETTE JJ/MM/AAA
+                    <!-- <embed src="gazette/Gazette-du-2023-02-09.pdf#page=1" width="80%" height="400px" type="application/pdf" scrolling="no" toolbar="0" /> -->
+
                 </div>
             </div>
             <div class="col">
-                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
-                    GAZETTE JJ/MM/AAA
+                <div class="gazette" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAAA
                 </div>
             </div>
             <div class="col">
-                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
-                    GAZETTE JJ/MM/AAA
+                <div class="gazette" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAAA
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
-                    GAZETTE JJ/MM/AAA
+                <div class="gazette" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAAA
                 </div>
             </div>
             <div class="col">
-                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
-                    GAZETTE JJ/MM/AAA
+                <div class="gazette" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAAA
                 </div>
             </div>
             <div class="col">
-                <div class="post" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
-                    GAZETTE JJ/MM/AAA
+                <div class="gazette" style="width: 80%; height:400px; background-color:grey; margin-top: 50px; margin-bottom: 50px; margin-left: 10%; position:relative">
+                    GAZETTE JJ/MM/AAAA
                 </div>
             </div>
         </div>

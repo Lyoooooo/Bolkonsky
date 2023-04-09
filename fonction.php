@@ -88,7 +88,7 @@ function ajoutgazette()
                         </script>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupFile01">PDF</label>
-                            <input class="form-control" name="pdf" type="file" id="formFile" accept=".pdf"><br>
+                            <input class="form-control" name="pdf" type="file" id="formFile" accept=".pdf" required><br>
                         </div>
 
                     </div>

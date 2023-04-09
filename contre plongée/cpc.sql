@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : mer. 05 avr. 2023 à 14:06
+-- Généré le : dim. 09 avr. 2023 à 14:22
 -- Version du serveur : 10.10.2-MariaDB
 -- Version de PHP : 8.0.26
 
@@ -59,6 +59,31 @@ CREATE TABLE IF NOT EXISTS `cine` (
   `lieu` varchar(255) NOT NULL,
   PRIMARY KEY (`idc`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `gazette`
+--
+
+DROP TABLE IF EXISTS `gazette`;
+CREATE TABLE IF NOT EXISTS `gazette` (
+  `idg` int(11) NOT NULL AUTO_INCREMENT,
+  `nomgazette` varchar(50) NOT NULL,
+  `dategazette` date NOT NULL,
+  `pdf` varchar(1000) NOT NULL,
+  PRIMARY KEY (`idg`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+--
+-- Déchargement des données de la table `gazette`
+--
+
+INSERT INTO `gazette` (`idg`, `nomgazette`, `dategazette`, `pdf`) VALUES
+(7, 'Gazette du ', '2023-02-09', 'gazette/Gazette du -2023-02-09.pdf'),
+(6, 'Gazette du ', '2023-03-09', 'gazette/Gazette du -2023-03-09.pdf'),
+(5, 'Gazette du ', '2023-04-09', 'gazette/Gazette du -2023-04-09.pdf'),
+(8, 'Gazette du ', '2023-01-09', 'gazette/Gazette du -2023-01-09.pdf');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
