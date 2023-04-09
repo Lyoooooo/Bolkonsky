@@ -94,38 +94,35 @@ $tab = $res->fetchAll();
     <div class="container text-center">
         <div class="row">
             <div class="col-8">
+
+
                 <?php
-
-                $nbr = 0;
-                while ($nbr < 2) { ?> <!-- WHILE il rest des articles (ordre à voir si on fait un tri) -->
-
+                foreach ($tab as $article) {
+                ?>
                     <div class="boxArticles">
-
+                        <hr>
                         <div class="row" style="width: 130%; height: 150px; margin-top: 20px; margin-right :100px; text-align: start;">
-                            <hr>
                             <div class="col-2">
                                 <div class="photoSeance" style="margin-left:20%">
-                                    <img src="images/placeholderAffiche.jpg" alt="">
+                                    <img src="<?php echo $article['photo']; ?>" alt="">
                                 </div>
                             </div>
                             <div class="col-10">
                                 <div class="titreArticle">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet ratione repellendus consectetur dolorum itaque, ipsam quia debitis ea saepe, vel quibusdam autem quas earum vitae laborum odio quo! Quo, fugiat.
+                                    <?php echo $article['titre']; ?>
                                 </div>
-                                <div class="descriArticle">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, perspiciatis laborum sapiente unde velit veritatis fuga? Molestiae maiores nesciunt ad. Corporis dicta accusamus culpa est unde, quo dolorem dignissimos perferendis?
+                                <div class="descriArticle" style="overflow-y: auto; max-height: 100px;">
+                                    <?php echo $article['description']; ?>
                                 </div>
                                 <div>
                                     <a href="articleIndiv.php">Lire la suite></a>
                                 </div>
                             </div>
-                            <hr>
+
                         </div>
-
+                        <hr>
                     </div>
-
-
-                <?php $nbr++;
+                <?php
                 }
                 ?>
             </div>
