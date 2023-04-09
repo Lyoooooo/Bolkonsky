@@ -2,6 +2,10 @@
 include "fonction.php";
 $pdo = connexion();
 mainHeader();
+$ida = $_GET["article"];
+$res = $pdo->prepare("SELECT * FROM article WHERE ida=?");
+$res->execute([$ida]);
+$article = $res->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -20,23 +24,14 @@ mainHeader();
 
 <body>
     <div class="bigPictureArticle">
-        <img src="images/placeholderAffiche.jpg" alt="">
+        <img src="<?php echo $article["photo"]?>" style="width: 100%">
     </div>
 
     <div class="titre" style="margin-top:20px;">
-        TITRE DE L'ARTICLE
+        <?php echo $article["titre"]?>
     </div>
     <div class="textArticle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi rem ipsa temporibus praesentium necessitatibus odit aspernatur quidem et. Voluptates autem ullam officia esse eveniet fuga sunt sed ut architecto temporibus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem expedita non necessitatibus quibusdam asperiores reprehenderit facere perspiciatis blanditiis. Pariatur esse velit voluptatum vitae praesentium officia animi! Qui adipisci harum officia.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis obcaecati placeat incidunt ea enim culpa temporibus cum esse vero? Nihil optio maxime error exercitationem officia nobis, quae quibusdam perspiciatis deleniti.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi rem ipsa temporibus praesentium necessitatibus odit aspernatur quidem et. Voluptates autem ullam officia esse eveniet fuga sunt sed ut architecto temporibus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem expedita non necessitatibus quibusdam asperiores reprehenderit facere perspiciatis blanditiis. Pariatur esse velit voluptatum vitae praesentium officia animi! Qui adipisci harum officia.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis obcaecati placeat incidunt ea enim culpa temporibus cum esse vero? Nihil optio maxime error exercitationem officia nobis, quae quibusdam perspiciatis deleniti.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi rem ipsa temporibus praesentium necessitatibus odit aspernatur quidem et. Voluptates autem ullam officia esse eveniet fuga sunt sed ut architecto temporibus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem expedita non necessitatibus quibusdam asperiores reprehenderit facere perspiciatis blanditiis. Pariatur esse velit voluptatum vitae praesentium officia animi! Qui adipisci harum officia.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis obcaecati placeat incidunt ea enim culpa temporibus cum esse vero? Nihil optio maxime error exercitationem officia nobis, quae quibusdam perspiciatis deleniti.
-
+        <?php echo $article["description"]?>
     </div>
 </body>
 <?php footer(); ?>

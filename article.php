@@ -69,40 +69,6 @@ $tab = $res->fetchAll();
         </nav>
     </div>
 
-
-    <?php
-
-    $nbr = 0;
-    while ($nbr < 3) { ?> <!-- WHILE il rest des articles (ordre à voir si on fait un tri) -->
-
-        <div class="boxArticles">
-            <hr>
-            <div class="row" style="height: 150px;">
-                <div class="col-2">
-                    <div class="photoSeance" style="margin-left:20%">
-                        <img src="images/placeholderAffiche.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="titreArticle">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet ratione repellendus consectetur dolorum itaque, ipsam quia debitis ea saepe, vel quibusdam autem quas earum vitae laborum odio quo! Quo, fugiat.
-                    </div>
-                    <div class="descriArticle">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, perspiciatis laborum sapiente unde velit veritatis fuga? Molestiae maiores nesciunt ad. Corporis dicta accusamus culpa est unde, quo dolorem dignissimos perferendis?
-                    </div>
-                    <div>
-                        <a href="articleIndiv.php">Lire la suite></a>
-                    </div>
-                </div>
-            </div>
-            <hr>
-        </div>
-
-
-    <?php $nbr++;
-    }
-    ?>
-
     <?php
     foreach ($tab as $article) {
     ?>
@@ -118,11 +84,11 @@ $tab = $res->fetchAll();
                     <div class="titreArticle">
                         <?php echo $article['titre']; ?>
                     </div>
-                    <div class="descriArticle" style="overflow-y: auto; max-height: 100px;">
-                        <?php echo $article['description']; ?>
+                    <div class="descriArticle" style="max-height: 100px;">
+                        <?php echo $article['description']; ?>...
                     </div>
                     <div>
-                        <a href="articleIndiv.php">Lire la suite></a>
+                        <a href="articleIndiv.php?article=<?php echo $article['ida']?>">Lire la suite></a>
                     </div>
                 </div>
 
