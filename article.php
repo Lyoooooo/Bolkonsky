@@ -3,6 +3,9 @@ include "fonction.php";
 $pdo = connexion();
 mainHeader();
 
+$res = $pdo->prepare("SELECT * FROM article ORDER BY datepost DESC limit 10");
+$res->execute();
+$tab = $res->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -97,6 +100,36 @@ mainHeader();
 
 
     <?php $nbr++;
+    }
+    ?>
+
+    <?php
+    foreach ($tab as $article) {
+    ?>
+        <div class="boxArticles">
+            <hr>
+            <div class="row" style="height: 150px;">
+                <div class="col-2">
+                    <div class="photoSeance" style="margin-left:20%">
+                        <img src="<?php echo $article['photo']; ?>" alt="">
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div class="titreArticle">
+                        <?php echo $article['titre']; ?>
+                    </div>
+                    <div class="descriArticle" style="overflow-y: auto; max-height: 100px;">
+                        <?php echo $article['description']; ?>
+                    </div>
+                    <div>
+                        <a href="articleIndiv.php">Lire la suite></a>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+        </div>
+    <?php
     }
     ?>
 </body>
