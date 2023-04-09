@@ -115,7 +115,7 @@ function ajoutgazette()
         $stmt->execute([null, $nomgazette, $dategazette, $pdf]);
     ?>
         <meta http-equiv="refresh" content="1">
-<?php   }
+    <?php   }
 }
 
 function ajoutpdf($nomgazette, $dategazette)
@@ -127,4 +127,68 @@ function ajoutpdf($nomgazette, $dategazette)
         move_uploaded_file($_FILES['pdf']['tmp_name'], $pdf); //place l'image dans le dossier
     }
     return $pdf;
+}
+
+function ajoutarticle()
+{
+    ?>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nouvel Article</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            Titre :<span class="etoile"> *</span>
+                            <input type="text" class="form-control" id="floatingInput" name="titre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Rentrez la descritpion du film/serie:</label> <span class="etoile"> *</span><br>
+                            <textarea class="form-control" name="description" id="description" placeholder="Description :" rows="2" required></textarea>
+                        </div>
+                        <label for="validationDefault01" class="form-label">Selectionnez la date de sortie du film/serie :</label> <span class="etoile">*</span><br> <!-- permet de rentré le champ date de naissance-->
+                        <input type="date" class="form-control" name="datesortie" id="datesortie" value=" " required><br>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupFile01">Photo</label>
+                            <input class="form-control" name="photo" type="file" id="formFile" accept=".png, .jpg, .jpeg .webp" required><br>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary" name="bouton">Poster</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php
+    if (isset($_POST["bouton"])) {
+        extract($_POST);
+        extract($_FILES);
+        // $idu = $_SESSION["idu"];
+        $pdo = connexion();
+        // if ($_FILES['photo']['name'] == "" || $_FILES['photo']['error'] == 4 || $_FILES['photo']['error'] == 1) {
+        //   $photo = NULL;
+        // } else {
+        $photo = ajoutphoto($titre);
+        // }
+        $stmt = $pdo->prepare("INSERT INTO article VALUES(?,?,?,?,?,?)");
+        $stmt->execute([null, $titre, $photo, date("Y-m-d H:i:s"), $datesortie, $description]);
+    ?>
+        <meta http-equiv="refresh" content="1">
+<?php   }
+}
+function ajoutphoto($titre)
+{
+    $extensions = array('jpg', 'jpeg', 'png'); //liste des extensions
+    $ext = strtolower(substr(strrchr($_FILES['photo']['name'], '.'), 1)); //extrait l'extension de l'image et la rend en minuscule
+    if ((in_array($ext, $extensions)) && ($_FILES['photo']['size'] < 20971520)) { //limite la taille et compare l'extension
+        $photo = 'images/' . $titre . '.jpg';
+        move_uploaded_file($_FILES['photo']['tmp_name'], $photo); //place l'image dans le dossier
+    }
+    return $photo;
 }

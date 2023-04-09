@@ -6,6 +6,41 @@ mainHeader();
 $res = $pdo->prepare("SELECT * FROM article ORDER BY datepost DESC limit 10");
 $res->execute();
 $tab = $res->fetchAll();
+
+if (isset($_GET['order']) && $_GET['order'] == 'asc') {
+    $order = 'ASC';
+} else {
+    $order = 'DESC';
+}
+
+if (isset($_GET['sort'])) {
+    switch ($_GET['sort']) {
+        case 'titre':
+            $col = 'titre';
+            break;
+        case 'datesortie':
+            $col = 'datesortie';
+            break;
+        case 'datepost':
+            $col = 'datepost';
+            break;
+        default:
+            $col = 'datepost';
+            break;
+    }
+} else {
+    $col = 'datepost';
+}
+
+$res = $pdo->prepare("SELECT * FROM article ORDER BY $col $order limit 10");
+$res->execute();
+$tab = $res->fetchAll();
+
+if (isset($_POST["reset"])) {
+    $res = $pdo->prepare("SELECT * FROM article ORDER BY datepost DESC limit 10");
+    $res->execute();
+    $tab = $res->fetchAll();
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +63,11 @@ $tab = $res->fetchAll();
     <div class="titre">
         ARTICLE
     </div>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position: fixed; bottom: 10%; right: 5%; border: 0px; background-color:rgba(0,0,0,0); z-index: 1;">
+        <img src="icons/boutonAddPost.webp" alt="" style="height: 60px;">
+    </button>
+    <?php ajoutarticle(); ?>
+
     <div class="boxArticles">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -35,31 +75,49 @@ $tab = $res->fetchAll();
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Filtrer
+                                <?php
+                                if (isset($_GET['sort'])) {
+                                    if ($_GET['sort'] == 'titre') {
+                                        echo 'Titre';
+                                    } elseif ($_GET['sort'] == 'date') {
+                                        echo 'Date de sortie';
+                                    } elseif ($_GET['sort'] == 'datepost') {
+                                        echo 'Date de poste';
+                                    }
+                                } else {
+                                    echo "Date de l'article";
+                                }
+                                ?>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="?sort=titre">Titre</a></li>
+                                <li><a class="dropdown-item" href="?sort=date">Date de sortie</a></li>
+                                <li><a class="dropdown-item" href="?sort=datepost">Date de poste</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Ordre
+                                <?php
+                                if (isset($_GET['order'])) {
+                                    if ($_GET['order'] == 'asc') {
+                                        echo 'Croissant';
+                                    } elseif ($_GET['order'] == 'desc') {
+                                        echo 'Décroissant';
+                                    }
+                                } else {
+                                    echo 'Croissant';
+                                }
+                                ?>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="?order=desc">Croissant</a></li>
+                                <li><a class="dropdown-item" href="?order=asc">Décroissant</a></li>
                             </ul>
                         </li>
+                        <button class="btn btn-outline-success" type="submit" name="reset">Reset</button>
                     </ul>
+
+
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Article" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Chercher</button>
@@ -85,10 +143,11 @@ $tab = $res->fetchAll();
                         <?php echo $article['titre']; ?>
                     </div>
                     <div class="descriArticle" style="max-height: 100px;">
+                        <!-- <div class="descriArticle" style="overflow-y: auto; max-height: 100px;"> -->
                         <?php echo $article['description']; ?>...
                     </div>
                     <div>
-                        <a href="articleIndiv.php?article=<?php echo $article['ida']?>">Lire la suite></a>
+                        <a href="articleIndiv.php?article=<?php echo $article['ida'] ?>">Lire la suite></a>
                     </div>
                 </div>
 
