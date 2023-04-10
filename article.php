@@ -114,7 +114,7 @@ if (isset($_POST["reset"])) {
                                 <li><a class="dropdown-item" href="?order=asc">Décroissant</a></li>
                             </ul>
                         </li>
-                        <button class="btn btn-outline-success" type="submit" name="reset">Reset</button>
+                        <button class="btn btn-outline-info" type="submit" name="reset">Reset</button>
                     </ul>
 
 
