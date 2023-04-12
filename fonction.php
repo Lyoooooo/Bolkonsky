@@ -111,6 +111,7 @@ function ajoutgazette()
         // } else {
         $pdf = ajoutpdf($nomgazette, $dategazette);
         // }
+        // echo ($pdf);
         $stmt = $pdo->prepare("INSERT INTO gazette VALUES(?,?,?,?)");
         $stmt->execute([null, $nomgazette, $dategazette, $pdf]);
     ?>
@@ -122,7 +123,7 @@ function ajoutpdf($nomgazette, $dategazette)
 {
     $extensions = array('pdf'); //liste des extensions
     $ext = strtolower(substr(strrchr($_FILES['pdf']['name'], '.'), 1)); //extrait l'extension de l'image et la rend en minuscule
-    if ((in_array($ext, $extensions)) && ($_FILES['pdf']['size'] < 20971520)) { //limite la taille et compare l'extension
+    if ((in_array($ext, $extensions)) && ($_FILES['pdf']['size'] < 41943040)) { //limite la taille et compare l'extension
         $pdf = 'gazette/' . $nomgazette . '-' . $dategazette . '.pdf';
         move_uploaded_file($_FILES['pdf']['tmp_name'], $pdf); //place l'image dans le dossier
     }
