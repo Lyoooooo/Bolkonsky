@@ -58,8 +58,7 @@ span.etoile {
 }
 
 .boxArticles {
-  margin-left: 5%;
-  width: 90%;
+  width: 100%;
 }
 
 .titreArticle {
@@ -99,3 +98,7 @@ span.etoile {
   text-align: center;
 }
 
+.centre{
+  margin-left: 5%;
+  width: 90%;
+}

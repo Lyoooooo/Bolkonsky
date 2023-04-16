@@ -33,50 +33,51 @@ $tab = $res->fetchAll();
         <img src="icons/boutonAddPost.webp" alt="" style="height: 60px;">
     </button>
     <?php ajoutarticle(); ?>
-
-    <div class="boxArticles">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Article" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Chercher</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </div>
-
-    <?php
-    foreach ($tab as $article) {
-    ?>
+    <div class="centre">
         <div class="boxArticles">
-            <hr>
-            <div class="row" style="height: 150px;">
-                <div class="col-2">
-                    <div class="photoSeance" style="margin-left:20%">
-                        <img src="<?php echo $article['photo']; ?>" alt="">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Article" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Chercher</button>
+                        </form>
                     </div>
                 </div>
-                <div class="col-10">
-                    <div class="titreArticle">
-                        <?php echo $article['titre']; ?>
-                    </div>
-                    <div class="descriArticle" style="max-height: 100px;">
-                        <!-- <div class="descriArticle" style="overflow-y: auto; max-height: 100px;"> -->
-                        <?php echo $article['description']; ?>...
-                    </div>
-                    <div>
-                        <a href="articleIndiv.php?article=<?php echo $article['ida'] ?>">Lire la suite></a>
-                    </div>
-                </div>
-
-            </div>
-            <hr>
+            </nav>
         </div>
-    <?php
-    }
-    ?>
+
+        <?php
+        foreach ($tab as $article) {
+        ?>
+            <div class="boxArticles">
+                <hr>
+                <div class="row" style="height: 150px;">
+                    <div class="col-2">
+                        <div class="photoSeance" style="margin-left:20%">
+                            <img src="<?php echo $article['photo']; ?>" alt="">
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="titreArticle">
+                            <?php echo $article['titre']; ?>
+                        </div>
+                        <div class="descriArticle" style="max-height: 100px;">
+                            <!-- <div class="descriArticle" style="overflow-y: auto; max-height: 100px;"> -->
+                            <?php echo $article['description']; ?>...
+                        </div>
+                        <div>
+                            <a href="articleIndiv.php?article=<?php echo $article['ida'] ?>">Lire la suite></a>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
     <nav aria-label="...">
         <ul class="pagination justify-content-center">
             <li class="page-item ">

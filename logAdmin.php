@@ -1,7 +1,6 @@
 <?php
 include "fonction.php";
 $pdo = connexion();
-mainHeader();
 
 if (isset($_POST["bouton"])) {
     extract($_POST);
@@ -78,8 +77,5 @@ if (isset($_POST["bouton"])) {
     </div>
 
 </body>
-<?php
-footer();
-?>
 
 </html>
