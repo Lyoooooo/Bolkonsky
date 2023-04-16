@@ -122,7 +122,7 @@ $tab = $res->fetchAll();
                                 <div class="titreArticle">
                                     <?php echo $article['titre']; ?>
                                 </div>
-                                <div class="descriArticle" style="overflow-y: auto; max-height: 100px;">
+                                <div class="descriArticle" style=" max-height: 100px;">
                                     <?php echo $article['description']; ?>
                                 </div>
                                 <div>

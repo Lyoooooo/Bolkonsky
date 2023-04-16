@@ -40,7 +40,7 @@ function mainHeader()
 ?>
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Contre Plongée Ciné</a>
+            <a class="navbar-brand" href="index.php">Contre Plongée Ciné</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -111,6 +111,7 @@ function ajoutgazette()
         // } else {
         $pdf = ajoutpdf($nomgazette, $dategazette);
         // }
+        // echo ($pdf);
         $stmt = $pdo->prepare("INSERT INTO gazette VALUES(?,?,?,?)");
         $stmt->execute([null, $nomgazette, $dategazette, $pdf]);
     ?>
@@ -122,7 +123,7 @@ function ajoutpdf($nomgazette, $dategazette)
 {
     $extensions = array('pdf'); //liste des extensions
     $ext = strtolower(substr(strrchr($_FILES['pdf']['name'], '.'), 1)); //extrait l'extension de l'image et la rend en minuscule
-    if ((in_array($ext, $extensions)) && ($_FILES['pdf']['size'] < 20971520)) { //limite la taille et compare l'extension
+    if ((in_array($ext, $extensions)) && ($_FILES['pdf']['size'] < 41943040)) { //limite la taille et compare l'extension
         $pdf = 'gazette/' . $nomgazette . '-' . $dategazette . '.pdf';
         move_uploaded_file($_FILES['pdf']['tmp_name'], $pdf); //place l'image dans le dossier
     }
@@ -146,11 +147,9 @@ function ajoutarticle()
                             <input type="text" class="form-control" id="floatingInput" name="titre" required>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Rentrez la descritpion du film/serie:</label> <span class="etoile"> *</span><br>
-                            <textarea class="form-control" name="description" id="description" placeholder="Description :" rows="2" required></textarea>
+                            <label for="exampleFormControlTextarea1" class="form-label">Rentrez la descritpion de l'article:</label> <span class="etoile"> *</span><br>
+                            <textarea class="form-control" name="description" id="description" placeholder="Description :" rows="2" maxlength="20000" required></textarea>
                         </div>
-                        <label for="validationDefault01" class="form-label">Selectionnez la date de sortie du film/serie :</label> <span class="etoile">*</span><br> <!-- permet de rentré le champ date de naissance-->
-                        <input type="date" class="form-control" name="datesortie" id="datesortie" value=" " required><br>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupFile01">Photo</label>
                             <input class="form-control" name="photo" type="file" id="formFile" accept=".png, .jpg, .jpeg .webp" required><br>
@@ -176,8 +175,8 @@ function ajoutarticle()
         // } else {
         $photo = ajoutphoto($titre);
         // }
-        $stmt = $pdo->prepare("INSERT INTO article VALUES(?,?,?,?,?,?)");
-        $stmt->execute([null, $titre, $photo, date("Y-m-d H:i:s"), $datesortie, $description]);
+        $stmt = $pdo->prepare("INSERT INTO article VALUES(?,?,?,?,?)");
+        $stmt->execute([null, $titre, $photo, date("Y-m-d H:i:s"), $description]);
     ?>
         <meta http-equiv="refresh" content="1">
 <?php   }
