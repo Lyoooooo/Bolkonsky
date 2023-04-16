@@ -3,3 +3,9 @@ icons : https://fonts.google.com/icons
 font sofia : https://fonts.google.com/specimen/Sofia+Sans+Extra+Condensed/tester?query=sofia
 
 format image bannière : 728 x 90 (aspect 8/1 mais pg si l'image est plus grande, on affichera que le haut qui rentre dans cet aspect)
+
+test intégration insta : https://www.youtube.com/watch?v=LbW2Qe6zdeI&ab_channel=Silentvoice976
+ID de l’app Instagram
+177055158486770
+Clé secrète de l’app Instagram
+9ddb097f32a8ab0def7ce1be6b28c7c8
